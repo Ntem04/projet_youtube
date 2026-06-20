@@ -39,17 +39,12 @@ Les fichiers sont nommes avec le titre et la resolution de la video pour limiter
 
 ## Executable Windows
 
-L'application packagee est disponible ici :
+L'application compilée est disponible dans `dist\`:
 
-```powershell
-dist\YouTubeDownloader\YouTubeDownloader.exe
-```
+- `YouTubeDownloader.exe` (Exécutable autonome)
+- `YouTubeDownloaderSetup.exe` (Installateur)
 
-L'installateur Windows est disponible ici :
-
-```powershell
-dist\YouTubeDownloaderSetup.exe
-```
+Pour utiliser l'extraction audio, placez `ffmpeg.exe` dans un dossier nommé `bin\` à la racine de l'application.
 
 Apres installation, l'application est copiee dans :
 
@@ -61,7 +56,7 @@ Un raccourci `YouTube Downloader Pro` est aussi cree sur le Bureau si l'option e
 
 ## Securite
 
-L'application applique une validation stricte des liens YouTube, installe sans privileges administrateur, enregistre uniquement dans `Downloads`, empeche l'ecrasement automatique des fichiers et bloque les telechargements connus comme superieurs a 2 Go.
+L'application applique une validation stricte des liens YouTube, installe sans privileges administrateur, enregistre uniquement dans `Downloads`, empeche l'ecrasement automatique des fichiers et bloque les telechargements connus comme superieurs a 2 Go. Elle sécurise l'utilisation de FFmpeg en ne le recherchant que dans le `PATH` système ou dans un dossier `bin\` local.
 
 Avant de partager l'installateur, vous pouvez generer son hash :
 
@@ -77,7 +72,7 @@ Depuis la racine du projet :
 
 ```powershell
 python -m pip install -r requirements.txt -r requirements-build.txt
-pyinstaller --noconfirm build\YouTubeDownloader.spec
+python -m PyInstaller --noconfirm --onefile --windowed --name YouTubeDownloader src/app_gui.py --collect-all customtkinter
 tools\InnoSetup\ISCC.exe installer\YouTubeDownloader.iss
 ```
 
