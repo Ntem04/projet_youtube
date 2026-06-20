@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+.venv-build/
+venv/
+env/
+
+# Build outputs
+dist/
+build/*
+!build/YouTubeDownloader.spec
+
+# Local build tools and downloaded installers
+tools/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
